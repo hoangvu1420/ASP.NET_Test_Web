@@ -1,0 +1,37 @@
+﻿@if (TempData["success"] != null)
+{
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script type="text/javascript">
+		toastr.success('@TempData["success"]');
+	</script>
+}
+
+@if (TempData["error"] != null)
+{
+	<div class="container p-3" style="position: fixed; bottom: 35px; right: 0; width: auto;">
+
+		<div class="alert alert-dismissible alert-danger fade show" role="alert">
+			<strong>Oh snap!</strong>
+			<div asp-validation-summary="ModelOnly"></div>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		</div>
+
+	</div>
+}
+
+@if (TempData["error_cus"] != null)
+{
+	<div class="container p-3" style="position: fixed; bottom: 35px; right: 0; width: auto;">
+
+		<div class="alert alert-dismissible alert-warning fade show" role="alert">
+			<strong>Error</strong>
+			<div class="container">@TempData["error_cus"]</div>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		</div>
+
+	</div>
+}
+
+
