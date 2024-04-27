@@ -144,7 +144,7 @@ public class ShoppingCartController : Controller
         if (applicationUser.CompanyId.GetValueOrDefault() == 0)
         {
             // shopping for personal use, we need to track the Stripe session
-            var domain = "https://localhost:7115/";
+            var domain = $"{Request.Scheme}://{Request.Host.Value}/"; ;
 
             var options = new SessionCreateOptions
             {

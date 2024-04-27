@@ -147,7 +147,10 @@ public class OrderController : Controller
         OrderVm.OrderHeader = _unitOfWork.OrderHeader.Get(o => o.Id == OrderVm.OrderHeader.Id, includeProperties: "ApplicationUser");
         OrderVm.OrderDetails = _unitOfWork.OrderDetail.GetRange(o => o.OrderHeaderId == OrderVm.OrderHeader.Id, includeProperties: "Product");
 
-		var domain = "https://localhost:7115/";
+		var domain = $"{Request.Scheme}://{Request.Host.Value}/"; 
+        // this will dynamically get the domain instead of hardcoding it
+        // Request.Scheme will get the http or https and Request.Host.Value will get the domain name
+
 		var options = new SessionCreateOptions
 		{
 			SuccessUrl = domain + $"Admin/Order/PaymentConfirmation?orderHeaderId={OrderVm.OrderHeader.Id}",
