@@ -1,0 +1,65 @@
+﻿@model BookStore.Models.Category
+
+<div class="card text-white bg-dark shadow border-0 mt-3">
+	<div class="card-header bg-secondary bg-gradient">
+		<div class="row">
+			<div>
+				<h3 class="text-dark">Create Category</h3>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-3">
+		<div class="container text-center">
+			<figure>
+				<img src="~/images/cat9a966f.png" alt="Cat Image" width="300" />
+				<figcaption>cat</figcaption>
+			</figure>
+		</div>
+		<form method="post">
+			<div class="form-floating mb-3 col-12">
+				<input asp-for=Name type="text" class="form-control border-0 shadow" id="inputName" placeholder="Enter category name" />
+				<label asp-for=Name class="form-label text-dark"></label>
+				<span asp-validation-for=Name class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3 col-12">
+				<input asp-for=DisplayOrder type="number" class="form-control border-0 shadow" id="inputDisplayOrder" placeholder="Enter display order" />
+				<label asp-for=DisplayOrder class="form-label text-dark"></label>
+				<span asp-validation-for=DisplayOrder class="text-danger"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-6 col-md-3">
+					<button type="submit" class="btn btn-primary form-control">Create new category</button>
+				</div>
+				<div class="col-6 col-md-3">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary border form-control">Back to the list</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+	<partial name="_Notification"></partial>
+}
+
+@section Scripts {
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
+@*
+The <partial> tag helper is used to render a partial view.
+The _ValidationScriptsPartial partial view is used to render the validation scripts.
+This view is used to render the validation scripts for client-side validation. Which means that the validation scripts are rendered in the browser, not on the server.
+More specifically, the _ValidationScriptsPartial partial view renders the following scripts:
+jquery.validate.js
+jquery.validate.unobtrusive.js
+These scripts are used to perform client-side validation.
+Note: this only works for validation logic defined in the model class.
+But, custom validation logic defined in the controller is not performed on the client-side.
+*@
+
+
+
