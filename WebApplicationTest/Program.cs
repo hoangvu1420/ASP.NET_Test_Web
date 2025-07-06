@@ -62,7 +62,7 @@ public class Program
                 true; // specifies whether the cookie is essential for the application to function correctly.
         }); // the AddSession method adds the session services to the application.
 
-        builder.Services.AddScoped<IDbInitializer, DbInitializer>(); // registers the DbInitializer class with the dependency injection container.
+        // builder.Services.AddScoped<IDbInitializer, DbInitializer>(); // registers the DbInitializer class with the dependency injection container.
 
         builder.Services.AddRazorPages(); // Razor Pages is added to perform identity tasks. Since the application uses Razor Pages for identity, we need to add Razor Pages to the application.
 
@@ -98,7 +98,7 @@ public class Program
 
         app.UseSession();
 
-        SeedDatabase(); // call the SeedDatabase method to seed the database with initial data.
+        // SeedDatabase(); // call the SeedDatabase method to seed the database with initial data.
 
         app.MapRazorPages();
 

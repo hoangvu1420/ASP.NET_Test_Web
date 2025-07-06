@@ -1,74 +1,74 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - WebApplicationTest</title>
-    <link rel="icon" href="~/ameIcon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="~/css/bootstrapSolar.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/WebApplicationTest.styles.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>@ViewData["Title"] - WebApplicationTest</title>
+	<link rel="icon" href="~/ameIcon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="~/css/bootstrapSolar.css"/>
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+	<link rel="stylesheet" href="~/WebApplicationTest.styles.css" asp-append-version="true"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"/>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-book"></i>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
-                        @*
+	<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark box-shadow" data-bs-theme="dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">
+				<i class="bi bi-book"></i>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarColor01">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item">
+						<a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+						@*
 							The asp-area, asp-controller, and asp-action are all part of ASP.NET Core’s built-in Tag Helpers.
 							These Tag Helpers are used for generating links.
 							For example, <a asp-controller="Home" asp-action="Index">Home</a> might be rendered as <a href="/Home/Index">Home</a>
 							*@
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
-                    </li>
-                    @if (User.IsInRole(StaticDetails.RoleAdmin))
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Register User</a> <!-- Create a Register User function in the Admin role -->
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
+					</li>
+					@if (User.IsInRole(StaticDetails.RoleAdmin))
+					{
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
+								<a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Register User</a> <!-- Create a Register User function in the Admin role -->
 							</div>
-                        </li>
-                    }
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-                <partial name="_LoginPartial"></partial>
-            </div>
-        </div>
-    </nav>
+						</li>
+					}
+					<li class="nav-item">
+						<a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
+					</li>
+				</ul>
+				<partial name="_LoginPartial"></partial>
+			</div>
+		</div>
+	</nav>
 
 </header>
 <div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+	<main role="main" class="pb-3">
+		@RenderBody()
+	</main>
 </div>
 
 <footer class="footer text-muted bg-dark">
-    <div class="text-center">
-        WebApplicationTest - 2023 - Made by HNV <i class="bi bi-cloud-drizzle-fill"></i> - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
+	<div class="text-center">
+		WebApplicationTest - 2023 - Made by HNV <i class="bi bi-cloud-drizzle-fill"></i> - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+	</div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@

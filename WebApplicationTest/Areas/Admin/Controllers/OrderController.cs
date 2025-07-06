@@ -17,7 +17,7 @@ public class OrderController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     [BindProperty]
-    public OrderVM OrderVm { get; set; }
+    public OrderVM OrderVm { get; set; } = new OrderVM();
 
     public OrderController(IUnitOfWork unitOfWork)
     {
@@ -27,7 +27,6 @@ public class OrderController : Controller
     // GET
     public IActionResult Index()
     {
-
         return View();
     }
     
@@ -182,7 +181,7 @@ public class OrderController : Controller
 
 		_unitOfWork.OrderHeader.UpdateStripePaymentId(OrderVm.OrderHeader.Id, session.Id, session.PaymentIntentId);
 		_unitOfWork.Save();
-		Response.Headers.Add("Location", session.Url);
+		Response.Headers.Append("Location", session.Url);
 		return new StatusCodeResult(303);
 	}
     

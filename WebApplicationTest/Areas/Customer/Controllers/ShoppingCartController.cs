@@ -15,7 +15,7 @@ public class ShoppingCartController : Controller
 {
     private readonly IUnitOfWork _unitOfWork;
     [BindProperty] // This is used to bind the ShoppingCartVM object to the view, so that we can access it in the view and use it to display the data
-    public ShoppingCartVM ShoppingCartVM { get; set; }
+    public ShoppingCartVM ShoppingCartVM { get; set; } = new ShoppingCartVM();
 
     public ShoppingCartController(IUnitOfWork unitOfWork, IConfiguration configuration)
     {
@@ -60,12 +60,12 @@ public class ShoppingCartController : Controller
             }
         };
 
-        ShoppingCartVM.OrderHeader.FullName = ShoppingCartVM.OrderHeader.ApplicationUser.Name;
-        ShoppingCartVM.OrderHeader.PhoneNumber = ShoppingCartVM.OrderHeader.ApplicationUser.PhoneNumber;
-        ShoppingCartVM.OrderHeader.StreetAddress = ShoppingCartVM.OrderHeader.ApplicationUser.StreetAddress;
-        ShoppingCartVM.OrderHeader.City = ShoppingCartVM.OrderHeader.ApplicationUser.City;
-        ShoppingCartVM.OrderHeader.State = ShoppingCartVM.OrderHeader.ApplicationUser.State;
-        ShoppingCartVM.OrderHeader.PostalCode = ShoppingCartVM.OrderHeader.ApplicationUser.PostalCode;
+        ShoppingCartVM.OrderHeader.FullName = ShoppingCartVM.OrderHeader.ApplicationUser?.Name ?? "";
+        ShoppingCartVM.OrderHeader.PhoneNumber = ShoppingCartVM.OrderHeader.ApplicationUser?.PhoneNumber ?? "";
+        ShoppingCartVM.OrderHeader.StreetAddress = ShoppingCartVM.OrderHeader.ApplicationUser?.StreetAddress ?? "";
+        ShoppingCartVM.OrderHeader.City = ShoppingCartVM.OrderHeader.ApplicationUser?.City ?? "";
+        ShoppingCartVM.OrderHeader.State = ShoppingCartVM.OrderHeader.ApplicationUser?.State ?? "";
+        ShoppingCartVM.OrderHeader.PostalCode = ShoppingCartVM.OrderHeader.ApplicationUser?.PostalCode ?? "";
         
         foreach (var cart in ShoppingCartVM.ListCart)
         {
@@ -144,13 +144,13 @@ public class ShoppingCartController : Controller
         if (applicationUser.CompanyId.GetValueOrDefault() == 0)
         {
             // shopping for personal use, we need to track the Stripe session
-            var domain = $"{Request.Scheme}://{Request.Host.Value}/"; ;
+            var domain = $"{Request.Scheme}://{Request.Host.Value}/";
 
             var options = new SessionCreateOptions
             {
                 SuccessUrl = domain + $"Customer/ShoppingCart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
                 CancelUrl = domain + "Customer/ShoppingCart/Index",
-                LineItems = new List<SessionLineItemOptions>(),
+                LineItems = [],
                 Mode = "payment"
             };
             foreach (var item in shoppingCarts)
@@ -175,7 +175,7 @@ public class ShoppingCartController : Controller
             
             _unitOfWork.OrderHeader.UpdateStripePaymentId(ShoppingCartVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
             _unitOfWork.Save();
-            Response.Headers.Add("Location", session.Url);
+            Response.Headers.Append("Location", session.Url);
             return new StatusCodeResult(303);
         }
         
@@ -192,7 +192,7 @@ public class ShoppingCartController : Controller
         {
             var service = new SessionService();
             Session session = service.Get(orderHeader.SessionId);
-            if (session.PaymentStatus.ToLower() == "paid")
+            if (session.PaymentStatus.Equals("paid", StringComparison.CurrentCultureIgnoreCase))
             {
                 _unitOfWork.OrderHeader.UpdateStripePaymentId(id, session.Id, session.PaymentIntentId);
                 _unitOfWork.OrderHeader.UpdateStatus(id, StaticDetails.OrderStatusApproved, StaticDetails.PaymentStatusApproved);
@@ -245,7 +245,7 @@ public class ShoppingCartController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    private double CalculatePriceBasedOnQty(ShoppingCart cart)
+    private static double CalculatePriceBasedOnQty(ShoppingCart cart)
     {
         if (cart.Count <= 50)
         {
