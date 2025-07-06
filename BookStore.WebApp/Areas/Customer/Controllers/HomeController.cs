@@ -2,9 +2,9 @@ using System.Diagnostics;
 using System.Security.Claims;
 using BookStore.DataAccess.Repositories.IRepository;
 using BookStore.Models;
+using BookStore.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TestApp.Utilities;
 
 namespace BookStore.WebApp.Areas.Customer.Controllers
 {

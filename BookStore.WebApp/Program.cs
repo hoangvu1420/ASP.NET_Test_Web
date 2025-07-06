@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
-using TestApp.Utilities;
+using BookStore.Utilities;
 
 namespace BookStore.WebApp;
 

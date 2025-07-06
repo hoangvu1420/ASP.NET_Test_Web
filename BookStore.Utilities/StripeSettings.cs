@@ -1,4 +1,4 @@
-﻿namespace TestApp.Utilities;
+﻿namespace BookStore.Utilities;
 
 public class StripeSettings
 {

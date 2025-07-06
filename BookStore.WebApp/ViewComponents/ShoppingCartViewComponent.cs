@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using BookStore.DataAccess.Repositories.IRepository;
+using BookStore.Utilities;
 using Microsoft.AspNetCore.Mvc;
-using TestApp.Utilities;
 
 namespace BookStore.WebApp.ViewComponents;
 

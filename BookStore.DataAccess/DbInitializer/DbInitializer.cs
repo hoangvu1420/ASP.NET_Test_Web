@@ -1,8 +1,8 @@
 ﻿using BookStore.DataAccess.Data;
 using BookStore.Models;
+using BookStore.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TestApp.Utilities;
 
 namespace BookStore.DataAccess.DbInitializer;
 

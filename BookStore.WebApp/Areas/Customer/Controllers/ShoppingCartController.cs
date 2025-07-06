@@ -2,10 +2,10 @@
 using BookStore.DataAccess.Repositories.IRepository;
 using BookStore.Models;
 using BookStore.Models.ViewModels;
+using BookStore.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
-using TestApp.Utilities;
 
 namespace BookStore.WebApp.Areas.Customer.Controllers;
 

@@ -80,7 +80,7 @@ namespace BookStore.DataAccess.Data
                     Price50 = 85,
                     Price100 = 80,
                     CategoryId = 1,
-                    ImageUrl = string.Empty
+                    ImageUrl = "/images/product/daf078ad-0f78-42f5-9735-b8d26c272523.jpg"
                 },
                 new Product
                 {
@@ -95,7 +95,7 @@ namespace BookStore.DataAccess.Data
                     Price50 = 25,
                     Price100 = 20,
                     CategoryId = 2,
-                    ImageUrl = string.Empty
+                    ImageUrl = "/images/product/02526d39-f1ed-471b-9322-03d192d7663e.jpg"
                 },
                 new Product
                 {
@@ -110,7 +110,7 @@ namespace BookStore.DataAccess.Data
                     Price50 = 40,
                     Price100 = 35,
                     CategoryId = 3,
-                    ImageUrl = string.Empty
+                    ImageUrl = "/images/product/61083e78-ebb5-4d66-8dff-64e8280986cd.jpg"
                 },
                 new Product
                 {
@@ -125,7 +125,7 @@ namespace BookStore.DataAccess.Data
                     Price50 = 60,
                     Price100 = 55,
                     CategoryId = 4,
-                    ImageUrl = string.Empty
+                    ImageUrl = "/images/product/15999f38-c592-428e-90ec-e8cdd3fb5ec7.jpg"
                 },
                 new Product
                 {
@@ -140,7 +140,7 @@ namespace BookStore.DataAccess.Data
                     Price50 = 25,
                     Price100 = 20,
                     CategoryId = 5,
-                    ImageUrl = string.Empty
+                    ImageUrl = "/images/product/70b9682c-cfe9-456d-8e20-8f513251940a.jpg"
                 },
                 new Product
                 {
@@ -155,7 +155,7 @@ namespace BookStore.DataAccess.Data
                     Price50 = 22,
                     Price100 = 20,
                     CategoryId = 6,
-                    ImageUrl = string.Empty
+                    ImageUrl = "/images/product/d628ca33-3144-454e-aff7-03ce22921ca5.jpg"
                 }
             );
         }

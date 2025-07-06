@@ -1,8 +1,8 @@
 ﻿using BookStore.DataAccess.Repositories.IRepository;
 using BookStore.Models;
+using BookStore.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TestApp.Utilities;
 
 namespace BookStore.WebApp.Areas.Admin.Controllers
 {

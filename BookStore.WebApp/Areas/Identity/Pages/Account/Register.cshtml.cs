@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using BookStore.DataAccess.Repositories.IRepository;
 using BookStore.Models;
+using BookStore.Utilities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -17,7 +18,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
-using TestApp.Utilities;
 
 namespace BookStore.WebApp.Areas.Identity.Pages.Account
 {
